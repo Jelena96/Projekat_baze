@@ -1,0 +1,36 @@
+﻿<Window x:Class="UI2.View.PopravljaView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UI2.View"
+        xmlns:local11="clr-namespace:UI2.ModelView"
+        mc:Ignorable="d"
+        Title="PopravljaView" Height="300" Width="300">
+    <Window.DataContext>
+        <local11:PopravljaViewModel/>
+    </Window.DataContext>
+
+    <Grid>
+        <Label Content="Dodela popravki" FontStyle="Italic" FontSize="15" Margin="73,5,67,233"/>
+        <Label Content="Izaberite majstora:" FontStyle="Italic" Margin="10,28,165,209"/>
+        <Label Content="Izaberite popravku:" FontStyle="Italic" Margin="157,29,0,209"/>
+
+        <ComboBox ItemsSource="{Binding KvarList}" SelectedItem="{Binding SelectedKvar}" Margin="157,65,31,170"/>
+        <ComboBox ItemsSource="{Binding MajstorList}" SelectedItem="{Binding SelectedMajstor}" Margin="10,65,178,170"/>
+        <Canvas Margin="0,0,687,376">
+            <ListView ItemsSource="{Binding MajstorKvarList}" SelectedItem="{Binding SelectedItem}" Background="LightGray" Height="126" Canvas.Left="22" Canvas.Top="138" Width="246">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Tip  kvara" DisplayMemberBinding="{Binding Value.Tip_kvara}"/>
+                        <GridViewColumn Header="Prezime" DisplayMemberBinding="{Binding Key.Radnik.Prezime}"/>
+                        <GridViewColumn Header="Ime" DisplayMemberBinding="{Binding Key.Radnik.Ime}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Canvas>
+        <Button Content="Dodaj" Margin="103,108,127,138" Command="{Binding AddCommand}"/>
+        <Button Content="Prikazi" Margin="199,108,31,138" Command="{Binding ShowCommand}"/>
+
+    </Grid>
+</Window>

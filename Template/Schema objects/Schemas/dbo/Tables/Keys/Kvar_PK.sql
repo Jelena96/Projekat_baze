@@ -1,0 +1,2 @@
+﻿ALTER TABLE Kvar ADD CONSTRAINT Kvar_PK PRIMARY KEY ( Sifra_kvara ) ;
+

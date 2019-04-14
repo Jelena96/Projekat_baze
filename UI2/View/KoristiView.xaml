@@ -1,0 +1,35 @@
+﻿<Window x:Class="UI2.View.KoristiView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UI2.View"
+        xmlns:local11="clr-namespace:UI2.ModelView"
+        mc:Ignorable="d"
+        Title="KoristiView" Height="500" Width="500">
+    <Window.DataContext>
+        <local11:KoristiViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Label Content="Dodela alata" FontStyle="Italic" FontSize="15" Margin="172,27,211,408"/>
+        <Label Content="Izaberite Kvar:" FontStyle="Italic" Margin="96,101,283,318"/>
+        <Label Content="Izaberite Alat:" FontStyle="Italic" Margin="244,101,114,326"/>
+        <ComboBox ItemsSource="{Binding KvarList}" SelectedItem="{Binding SelectedKvar}" Margin="108,148,304,288"/>
+        <ComboBox ItemsSource="{Binding AlatList}" SelectedItem="{Binding SelectedAlat}" Margin="257,148,168,288"/>
+
+        <Canvas Margin="0,0,687,376">
+            <ListView ItemsSource="{Binding MajstorKvarList}" SelectedItem="{Binding SelectedItem}" Background="LightGray" Height="145" Canvas.Left="62" Canvas.Top="239" Width="326">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Tip  kvara" Width="80" DisplayMemberBinding="{Binding Key.Kvar.Tip_kvara}"/>
+                        <GridViewColumn Header="Prezime" Width="80"  DisplayMemberBinding="{Binding Key.Majstor.Radnik.Prezime}"/>
+                        <GridViewColumn Header="Ime" Width="80"  DisplayMemberBinding="{Binding Key.Majstor.Radnik.Ime}"/>
+                        <GridViewColumn Header="Alat" Width="80"  DisplayMemberBinding="{Binding Value.Naziv_alata}"/>
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Canvas>
+        <Button Content="Dodaj" Margin="108,419,320,20" Command="{Binding AddCommand}"/>
+    </Grid>
+</Window>

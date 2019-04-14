@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities1">
+    <EntitySetMapping Name="Alats">
+      <EntityTypeMapping TypeName="Model.Alat">
+        <MappingFragment StoreEntitySet="Alat">
+          <ScalarProperty Name="Naziv_alata" ColumnName="Naziv_alata" />
+          <ScalarProperty Name="Sifra_alata" ColumnName="Sifra_alata" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Autoes">
+      <EntityTypeMapping TypeName="Model.Auto">
+        <MappingFragment StoreEntitySet="Auto">
+          <ScalarProperty Name="Vrsta_auta" ColumnName="Vrsta_auta" />
+          <ScalarProperty Name="Sifra_auta" ColumnName="Sifra_auta" />
+          <ScalarProperty Name="Marka" ColumnName="Marka" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Deos">
+      <EntityTypeMapping TypeName="Model.Deo">
+        <MappingFragment StoreEntitySet="Deo">
+          <ScalarProperty Name="Naziv_deo" ColumnName="Naziv_deo" />
+          <ScalarProperty Name="Prozivodjac" ColumnName="Prozivodjac" />
+          <ScalarProperty Name="Sifra_Deo" ColumnName="Sifra_Deo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dobavljacs">
+      <EntityTypeMapping TypeName="Model.Dobavljac">
+        <MappingFragment StoreEntitySet="Dobavljac">
+          <ScalarProperty Name="Sifra_dobavljaca" ColumnName="Sifra_dobavljaca" />
+          <ScalarProperty Name="Ime_dobavljaca" ColumnName="Ime_dobavljaca" />
+          <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Komercijalistas">
+      <EntityTypeMapping TypeName="Model.Komercijalista">
+        <MappingFragment StoreEntitySet="Komercijalista">
+          <ScalarProperty Name="Vrsta_nabavke" ColumnName="Vrsta_nabavke" />
+          <ScalarProperty Name="Sifra_radnika" ColumnName="Sifra_radnika" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kvars">
+      <EntityTypeMapping TypeName="Model.Kvar">
+        <MappingFragment StoreEntitySet="Kvar">
+          <ScalarProperty Name="Tip_kvara" ColumnName="Tip_kvara" />
+          <ScalarProperty Name="Sifra_kvara" ColumnName="Sifra_kvara" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Majstors">
+      <EntityTypeMapping TypeName="Model.Majstor">
+        <MappingFragment StoreEntitySet="Majstor">
+          <ScalarProperty Name="Specijalnost" ColumnName="Specijalnost" />
+          <ScalarProperty Name="Sifra_radnika" ColumnName="Sifra_radnika" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Popravkas">
+      <EntityTypeMapping TypeName="Model.Popravka">
+        <MappingFragment StoreEntitySet="Popravka">
+          <ScalarProperty Name="Sifra_usluge" ColumnName="Sifra_usluge" />
+          <ScalarProperty Name="Garaza" ColumnName="Garaza" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Popravljas">
+      <EntityTypeMapping TypeName="Model.Popravlja">
+        <MappingFragment StoreEntitySet="Popravlja">
+          <ScalarProperty Name="Kvar_Sifra_kvara" ColumnName="Kvar_Sifra_kvara" />
+          <ScalarProperty Name="Majstor_Sifra_radnika" ColumnName="Majstor_Sifra_radnika" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Porucujes">
+      <EntityTypeMapping TypeName="Model.Porucuje">
+        <MappingFragment StoreEntitySet="Porucuje">
+          <ScalarProperty Name="Komercijalista_Sifra_radnika" ColumnName="Komercijalista_Sifra_radnika" />
+          <ScalarProperty Name="Deo_Sifra_Deo" ColumnName="Deo_Sifra_Deo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pripadas">
+      <EntityTypeMapping TypeName="Model.Pripada">
+        <MappingFragment StoreEntitySet="Pripada">
+          <ScalarProperty Name="Kvar_Sifra_kvara" ColumnName="Kvar_Sifra_kvara" />
+          <ScalarProperty Name="Auto_Sifra_auta" ColumnName="Auto_Sifra_auta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Radniks">
+      <EntityTypeMapping TypeName="Model.Radnik">
+        <MappingFragment StoreEntitySet="Radnik">
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="MBR" ColumnName="MBR" />
+          <ScalarProperty Name="Sifra_radnika" ColumnName="Sifra_radnika" />
+          <ScalarProperty Name="Majstor" ColumnName="Majstor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Radnik_na_tehnickom_pregledu">
+      <EntityTypeMapping TypeName="Model.Radnik_na_tehnickom_pregledu">
+        <MappingFragment StoreEntitySet="Radnik_na_tehnickom_pregledu">
+          <ScalarProperty Name="Vrsta_vozila" ColumnName="Vrsta_vozila" />
+          <ScalarProperty Name="Sifra_radnika" ColumnName="Sifra_radnika" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tehnicki_pregled">
+      <EntityTypeMapping TypeName="Model.Tehnicki_pregled">
+        <MappingFragment StoreEntitySet="Tehnicki_pregled">
+          <ScalarProperty Name="Sifra_usluge" ColumnName="Sifra_usluge" />
+          <ScalarProperty Name="Uspesnost" ColumnName="Uspesnost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Uslugas">
+      <EntityTypeMapping TypeName="Model.Usluga">
+        <MappingFragment StoreEntitySet="Usluga">
+          <ScalarProperty Name="Sifra_usluge" ColumnName="Sifra_usluge" />
+          <ScalarProperty Name="Vreme" ColumnName="Vreme" />
+          <ScalarProperty Name="Vrsta" ColumnName="Vrsta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Koristi" TypeName="Model.Koristi" StoreEntitySet="Koristi">
+      <EndProperty Name="Alat">
+        <ScalarProperty Name="Sifra_alata" ColumnName="Alat_Sifra_alata" />
+      </EndProperty>
+      <EndProperty Name="Popravlja">
+        <ScalarProperty Name="Kvar_Sifra_kvara" ColumnName="Popravlja_Sifra_kvara" />
+        <ScalarProperty Name="Majstor_Sifra_radnika" ColumnName="Popravlja_Sifra_radnika" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Nabavlja" TypeName="Model.Nabavlja" StoreEntitySet="Nabavlja">
+      <EndProperty Name="Dobavljac">
+        <ScalarProperty Name="Sifra_dobavljaca" ColumnName="Dobavljac_Sifra_dobavljaca" />
+      </EndProperty>
+      <EndProperty Name="Porucuje">
+        <ScalarProperty Name="Komercijalista_Sifra_radnika" ColumnName="Porucuje_Sifra_radnika" />
+        <ScalarProperty Name="Deo_Sifra_Deo" ColumnName="Porucuje_Sifra_Deo" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Pregleda" TypeName="Model.Pregleda" StoreEntitySet="Pregleda">
+      <EndProperty Name="Auto">
+        <ScalarProperty Name="Sifra_auta" ColumnName="Auto_Sifra_auta" />
+      </EndProperty>
+      <EndProperty Name="Radnik_na_tehnickom_pregledu">
+        <ScalarProperty Name="Sifra_radnika" ColumnName="Radnik_na_tehnickom_pregledu_Sifra_radnika" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Pruza" TypeName="Model.Pruza" StoreEntitySet="Pruza">
+      <EndProperty Name="Radnik">
+        <ScalarProperty Name="Sifra_radnika" ColumnName="Radnik_Sifra_radnika" />
+      </EndProperty>
+      <EndProperty Name="Usluga">
+        <ScalarProperty Name="Sifra_usluge" ColumnName="Usluga_Sifra_usluge" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Radi_popravka" TypeName="Model.Radi_popravka" StoreEntitySet="Radi_popravka">
+      <EndProperty Name="Majstor">
+        <ScalarProperty Name="Sifra_radnika" ColumnName="Majstor_Sifra_radnika" />
+      </EndProperty>
+      <EndProperty Name="Popravka">
+        <ScalarProperty Name="Sifra_usluge" ColumnName="Popravka_Sifra_usluge" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Radi_pregled" TypeName="Model.Radi_pregled" StoreEntitySet="Radi_pregled">
+      <EndProperty Name="Radnik_na_tehnickom_pregledu">
+        <ScalarProperty Name="Sifra_radnika" ColumnName="Radnik_na_tehnickom_pregledu_Sifra_radnika" />
+      </EndProperty>
+      <EndProperty Name="Tehnicki_pregled">
+        <ScalarProperty Name="Sifra_usluge" ColumnName="Tehnicki_pregled_Sifra_usluge" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Za" TypeName="Model.Za" StoreEntitySet="Za">
+      <EndProperty Name="Porucuje">
+        <ScalarProperty Name="Komercijalista_Sifra_radnika" ColumnName="Porucuje_Komercijalista_Sifra_radnika" />
+        <ScalarProperty Name="Deo_Sifra_Deo" ColumnName="Porucuje_Deo_Sifra_Deo" />
+      </EndProperty>
+      <EndProperty Name="Pripada">
+        <ScalarProperty Name="Kvar_Sifra_kvara" ColumnName="Pripada_Kvar_Sifra_kvara" />
+        <ScalarProperty Name="Auto_Sifra_auta" ColumnName="Pripada_Auto_Sifra_auta" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

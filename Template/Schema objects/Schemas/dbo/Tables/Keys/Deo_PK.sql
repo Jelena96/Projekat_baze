@@ -1,0 +1,2 @@
+﻿ALTER TABLE Deo ADD CONSTRAINT Deo_PK PRIMARY KEY ( Sifra_Deo ) ;
+

@@ -1,0 +1,1 @@
+﻿ALTER TABLE Alat ADD CONSTRAINT Alat_PK PRIMARY KEY ( Sifra_alata ) ;

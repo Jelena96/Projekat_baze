@@ -1,0 +1,1248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Alat">
+          <Key>
+            <PropertyRef Name="Sifra_alata" />
+          </Key>
+          <Property Name="Naziv_alata" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Sifra_alata" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Auto">
+          <Key>
+            <PropertyRef Name="Sifra_auta" />
+          </Key>
+          <Property Name="Vrsta_auta" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Sifra_auta" Type="int" Nullable="false" />
+          <Property Name="Marka" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Deo">
+          <Key>
+            <PropertyRef Name="Sifra_Deo" />
+          </Key>
+          <Property Name="Naziv_deo" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Prozivodjac" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Sifra_Deo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dobavljac">
+          <Key>
+            <PropertyRef Name="Sifra_dobavljaca" />
+          </Key>
+          <Property Name="Sifra_dobavljaca" Type="int" Nullable="false" />
+          <Property Name="Ime_dobavljaca" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Adresa" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Komercijalista">
+          <Key>
+            <PropertyRef Name="Sifra_radnika" />
+          </Key>
+          <Property Name="Vrsta_nabavke" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Sifra_radnika" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Koristi">
+          <Key>
+            <PropertyRef Name="Popravlja_Sifra_kvara" />
+            <PropertyRef Name="Popravlja_Sifra_radnika" />
+            <PropertyRef Name="Alat_Sifra_alata" />
+          </Key>
+          <Property Name="Popravlja_Sifra_kvara" Type="int" Nullable="false" />
+          <Property Name="Popravlja_Sifra_radnika" Type="int" Nullable="false" />
+          <Property Name="Alat_Sifra_alata" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kvar">
+          <Key>
+            <PropertyRef Name="Sifra_kvara" />
+          </Key>
+          <Property Name="Tip_kvara" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Sifra_kvara" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Majstor">
+          <Key>
+            <PropertyRef Name="Sifra_radnika" />
+          </Key>
+          <Property Name="Specijalnost" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Sifra_radnika" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nabavlja">
+          <Key>
+            <PropertyRef Name="Porucuje_Sifra_radnika" />
+            <PropertyRef Name="Porucuje_Sifra_Deo" />
+            <PropertyRef Name="Dobavljac_Sifra_dobavljaca" />
+          </Key>
+          <Property Name="Porucuje_Sifra_radnika" Type="int" Nullable="false" />
+          <Property Name="Porucuje_Sifra_Deo" Type="int" Nullable="false" />
+          <Property Name="Dobavljac_Sifra_dobavljaca" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Popravka">
+          <Key>
+            <PropertyRef Name="Sifra_usluge" />
+          </Key>
+          <Property Name="Sifra_usluge" Type="int" Nullable="false" />
+          <Property Name="Garaza" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Popravlja">
+          <Key>
+            <PropertyRef Name="Kvar_Sifra_kvara" />
+            <PropertyRef Name="Majstor_Sifra_radnika" />
+          </Key>
+          <Property Name="Kvar_Sifra_kvara" Type="int" Nullable="false" />
+          <Property Name="Majstor_Sifra_radnika" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Porucuje">
+          <Key>
+            <PropertyRef Name="Komercijalista_Sifra_radnika" />
+            <PropertyRef Name="Deo_Sifra_Deo" />
+          </Key>
+          <Property Name="Komercijalista_Sifra_radnika" Type="int" Nullable="false" />
+          <Property Name="Deo_Sifra_Deo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pregleda">
+          <Key>
+            <PropertyRef Name="Radnik_na_tehnickom_pregledu_Sifra_radnika" />
+            <PropertyRef Name="Auto_Sifra_auta" />
+          </Key>
+          <Property Name="Radnik_na_tehnickom_pregledu_Sifra_radnika" Type="int" Nullable="false" />
+          <Property Name="Auto_Sifra_auta" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pripada">
+          <Key>
+            <PropertyRef Name="Kvar_Sifra_kvara" />
+            <PropertyRef Name="Auto_Sifra_auta" />
+          </Key>
+          <Property Name="Kvar_Sifra_kvara" Type="int" Nullable="false" />
+          <Property Name="Auto_Sifra_auta" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pruza">
+          <Key>
+            <PropertyRef Name="Usluga_Sifra_usluge" />
+            <PropertyRef Name="Radnik_Sifra_radnika" />
+          </Key>
+          <Property Name="Usluga_Sifra_usluge" Type="int" Nullable="false" />
+          <Property Name="Radnik_Sifra_radnika" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Radi_popravka">
+          <Key>
+            <PropertyRef Name="Popravka_Sifra_usluge" />
+            <PropertyRef Name="Majstor_Sifra_radnika" />
+          </Key>
+          <Property Name="Popravka_Sifra_usluge" Type="int" Nullable="false" />
+          <Property Name="Majstor_Sifra_radnika" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Radi_pregled">
+          <Key>
+            <PropertyRef Name="Radnik_na_tehnickom_pregledu_Sifra_radnika" />
+            <PropertyRef Name="Tehnicki_pregled_Sifra_usluge" />
+          </Key>
+          <Property Name="Radnik_na_tehnickom_pregledu_Sifra_radnika" Type="int" Nullable="false" />
+          <Property Name="Tehnicki_pregled_Sifra_usluge" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Radnik">
+          <Key>
+            <PropertyRef Name="Sifra_radnika" />
+          </Key>
+          <Property Name="Ime" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Prezime" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="MBR" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="Sifra_radnika" Type="int" Nullable="false" />
+          <Property Name="Majstor" Type="varchar" MaxLength="28" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Radnik_na_tehnickom_pregledu">
+          <Key>
+            <PropertyRef Name="Sifra_radnika" />
+          </Key>
+          <Property Name="Vrsta_vozila" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Sifra_radnika" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tehnicki_pregled">
+          <Key>
+            <PropertyRef Name="Sifra_usluge" />
+          </Key>
+          <Property Name="Sifra_usluge" Type="int" Nullable="false" />
+          <Property Name="Uspesnost" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usluga">
+          <Key>
+            <PropertyRef Name="Sifra_usluge" />
+          </Key>
+          <Property Name="Sifra_usluge" Type="int" Nullable="false" />
+          <Property Name="Vreme" Type="date" Nullable="false" />
+          <Property Name="Vrsta" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Za">
+          <Key>
+            <PropertyRef Name="Porucuje_Komercijalista_Sifra_radnika" />
+            <PropertyRef Name="Porucuje_Deo_Sifra_Deo" />
+            <PropertyRef Name="Pripada_Kvar_Sifra_kvara" />
+            <PropertyRef Name="Pripada_Auto_Sifra_auta" />
+          </Key>
+          <Property Name="Porucuje_Komercijalista_Sifra_radnika" Type="int" Nullable="false" />
+          <Property Name="Porucuje_Deo_Sifra_Deo" Type="int" Nullable="false" />
+          <Property Name="Pripada_Kvar_Sifra_kvara" Type="int" Nullable="false" />
+          <Property Name="Pripada_Auto_Sifra_auta" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="Komercijalista_Radnik_FK">
+          <End Role="Radnik" Type="Self.Radnik" Multiplicity="1" />
+          <End Role="Komercijalista" Type="Self.Komercijalista" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Radnik">
+              <PropertyRef Name="Sifra_radnika" />
+            </Principal>
+            <Dependent Role="Komercijalista">
+              <PropertyRef Name="Sifra_radnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Koristi_Alat_FK">
+          <End Role="Alat" Type="Self.Alat" Multiplicity="1" />
+          <End Role="Koristi" Type="Self.Koristi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alat">
+              <PropertyRef Name="Sifra_alata" />
+            </Principal>
+            <Dependent Role="Koristi">
+              <PropertyRef Name="Alat_Sifra_alata" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Koristi_Popravlja_FK">
+          <End Role="Popravlja" Type="Self.Popravlja" Multiplicity="1" />
+          <End Role="Koristi" Type="Self.Koristi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Popravlja">
+              <PropertyRef Name="Kvar_Sifra_kvara" />
+              <PropertyRef Name="Majstor_Sifra_radnika" />
+            </Principal>
+            <Dependent Role="Koristi">
+              <PropertyRef Name="Popravlja_Sifra_kvara" />
+              <PropertyRef Name="Popravlja_Sifra_radnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Majstor_Radnik_FK">
+          <End Role="Radnik" Type="Self.Radnik" Multiplicity="1" />
+          <End Role="Majstor" Type="Self.Majstor" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Radnik">
+              <PropertyRef Name="Sifra_radnika" />
+            </Principal>
+            <Dependent Role="Majstor">
+              <PropertyRef Name="Sifra_radnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Nabavlja_Dobavljac_FK">
+          <End Role="Dobavljac" Type="Self.Dobavljac" Multiplicity="1" />
+          <End Role="Nabavlja" Type="Self.Nabavlja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dobavljac">
+              <PropertyRef Name="Sifra_dobavljaca" />
+            </Principal>
+            <Dependent Role="Nabavlja">
+              <PropertyRef Name="Dobavljac_Sifra_dobavljaca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Nabavlja_Porucuje_FK">
+          <End Role="Porucuje" Type="Self.Porucuje" Multiplicity="1" />
+          <End Role="Nabavlja" Type="Self.Nabavlja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Porucuje">
+              <PropertyRef Name="Komercijalista_Sifra_radnika" />
+              <PropertyRef Name="Deo_Sifra_Deo" />
+            </Principal>
+            <Dependent Role="Nabavlja">
+              <PropertyRef Name="Porucuje_Sifra_radnika" />
+              <PropertyRef Name="Porucuje_Sifra_Deo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Popravka_Usluga_FK">
+          <End Role="Usluga" Type="Self.Usluga" Multiplicity="1" />
+          <End Role="Popravka" Type="Self.Popravka" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usluga">
+              <PropertyRef Name="Sifra_usluge" />
+            </Principal>
+            <Dependent Role="Popravka">
+              <PropertyRef Name="Sifra_usluge" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Popravlja_Kvar_FK">
+          <End Role="Kvar" Type="Self.Kvar" Multiplicity="1" />
+          <End Role="Popravlja" Type="Self.Popravlja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kvar">
+              <PropertyRef Name="Sifra_kvara" />
+            </Principal>
+            <Dependent Role="Popravlja">
+              <PropertyRef Name="Kvar_Sifra_kvara" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Popravlja_Majstor_FK">
+          <End Role="Majstor" Type="Self.Majstor" Multiplicity="1" />
+          <End Role="Popravlja" Type="Self.Popravlja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Majstor">
+              <PropertyRef Name="Sifra_radnika" />
+            </Principal>
+            <Dependent Role="Popravlja">
+              <PropertyRef Name="Majstor_Sifra_radnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Porucuje_Deo_FK">
+          <End Role="Deo" Type="Self.Deo" Multiplicity="1" />
+          <End Role="Porucuje" Type="Self.Porucuje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deo">
+              <PropertyRef Name="Sifra_Deo" />
+            </Principal>
+            <Dependent Role="Porucuje">
+              <PropertyRef Name="Deo_Sifra_Deo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Porucuje_Komercijalista_FK">
+          <End Role="Komercijalista" Type="Self.Komercijalista" Multiplicity="1" />
+          <End Role="Porucuje" Type="Self.Porucuje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Komercijalista">
+              <PropertyRef Name="Sifra_radnika" />
+            </Principal>
+            <Dependent Role="Porucuje">
+              <PropertyRef Name="Komercijalista_Sifra_radnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Pregleda_Auto_FK">
+          <End Role="Auto" Type="Self.Auto" Multiplicity="1" />
+          <End Role="Pregleda" Type="Self.Pregleda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Auto">
+              <PropertyRef Name="Sifra_auta" />
+            </Principal>
+            <Dependent Role="Pregleda">
+              <PropertyRef Name="Auto_Sifra_auta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Pregleda_Radnik_na_tehnickom_pregledu_FK">
+          <End Role="Radnik_na_tehnickom_pregledu" Type="Self.Radnik_na_tehnickom_pregledu" Multiplicity="1" />
+          <End Role="Pregleda" Type="Self.Pregleda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Radnik_na_tehnickom_pregledu">
+              <PropertyRef Name="Sifra_radnika" />
+            </Principal>
+            <Dependent Role="Pregleda">
+              <PropertyRef Name="Radnik_na_tehnickom_pregledu_Sifra_radnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Pripada_Auto_FK">
+          <End Role="Auto" Type="Self.Auto" Multiplicity="1" />
+          <End Role="Pripada" Type="Self.Pripada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Auto">
+              <PropertyRef Name="Sifra_auta" />
+            </Principal>
+            <Dependent Role="Pripada">
+              <PropertyRef Name="Auto_Sifra_auta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Pripada_Kvar_FK">
+          <End Role="Kvar" Type="Self.Kvar" Multiplicity="1" />
+          <End Role="Pripada" Type="Self.Pripada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kvar">
+              <PropertyRef Name="Sifra_kvara" />
+            </Principal>
+            <Dependent Role="Pripada">
+              <PropertyRef Name="Kvar_Sifra_kvara" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Pruza_Radnik_FK">
+          <End Role="Radnik" Type="Self.Radnik" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Pruza" Type="Self.Pruza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Radnik">
+              <PropertyRef Name="Sifra_radnika" />
+            </Principal>
+            <Dependent Role="Pruza">
+              <PropertyRef Name="Radnik_Sifra_radnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Pruza_Usluga_FK">
+          <End Role="Usluga" Type="Self.Usluga" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Pruza" Type="Self.Pruza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usluga">
+              <PropertyRef Name="Sifra_usluge" />
+            </Principal>
+            <Dependent Role="Pruza">
+              <PropertyRef Name="Usluga_Sifra_usluge" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Radi_popravka_Majstor_FK">
+          <End Role="Majstor" Type="Self.Majstor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Radi_popravka" Type="Self.Radi_popravka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Majstor">
+              <PropertyRef Name="Sifra_radnika" />
+            </Principal>
+            <Dependent Role="Radi_popravka">
+              <PropertyRef Name="Majstor_Sifra_radnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Radi_popravka_Popravka_FK">
+          <End Role="Popravka" Type="Self.Popravka" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Radi_popravka" Type="Self.Radi_popravka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Popravka">
+              <PropertyRef Name="Sifra_usluge" />
+            </Principal>
+            <Dependent Role="Radi_popravka">
+              <PropertyRef Name="Popravka_Sifra_usluge" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Radi_pregled_Radnik_na_tehnickom_pregledu_FK">
+          <End Role="Radnik_na_tehnickom_pregledu" Type="Self.Radnik_na_tehnickom_pregledu" Multiplicity="1" />
+          <End Role="Radi_pregled" Type="Self.Radi_pregled" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Radnik_na_tehnickom_pregledu">
+              <PropertyRef Name="Sifra_radnika" />
+            </Principal>
+            <Dependent Role="Radi_pregled">
+              <PropertyRef Name="Radnik_na_tehnickom_pregledu_Sifra_radnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Radi_pregled_Tehnicki_pregled_FK">
+          <End Role="Tehnicki_pregled" Type="Self.Tehnicki_pregled" Multiplicity="1" />
+          <End Role="Radi_pregled" Type="Self.Radi_pregled" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tehnicki_pregled">
+              <PropertyRef Name="Sifra_usluge" />
+            </Principal>
+            <Dependent Role="Radi_pregled">
+              <PropertyRef Name="Tehnicki_pregled_Sifra_usluge" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Radnik_na_tehnickom_pregledu_Radnik_FK">
+          <End Role="Radnik" Type="Self.Radnik" Multiplicity="1" />
+          <End Role="Radnik_na_tehnickom_pregledu" Type="Self.Radnik_na_tehnickom_pregledu" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Radnik">
+              <PropertyRef Name="Sifra_radnika" />
+            </Principal>
+            <Dependent Role="Radnik_na_tehnickom_pregledu">
+              <PropertyRef Name="Sifra_radnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Tehnicki_pregled_Usluga_FK">
+          <End Role="Usluga" Type="Self.Usluga" Multiplicity="1" />
+          <End Role="Tehnicki_pregled" Type="Self.Tehnicki_pregled" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usluga">
+              <PropertyRef Name="Sifra_usluge" />
+            </Principal>
+            <Dependent Role="Tehnicki_pregled">
+              <PropertyRef Name="Sifra_usluge" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Za_Porucuje_Komercijalista_FK">
+          <End Role="Porucuje" Type="Self.Porucuje" Multiplicity="1" />
+          <End Role="Za" Type="Self.Za" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Porucuje">
+              <PropertyRef Name="Komercijalista_Sifra_radnika" />
+              <PropertyRef Name="Deo_Sifra_Deo" />
+            </Principal>
+            <Dependent Role="Za">
+              <PropertyRef Name="Porucuje_Komercijalista_Sifra_radnika" />
+              <PropertyRef Name="Porucuje_Deo_Sifra_Deo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Za_Pripada_FK">
+          <End Role="Pripada" Type="Self.Pripada" Multiplicity="1" />
+          <End Role="Za" Type="Self.Za" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pripada">
+              <PropertyRef Name="Kvar_Sifra_kvara" />
+              <PropertyRef Name="Auto_Sifra_auta" />
+            </Principal>
+            <Dependent Role="Za">
+              <PropertyRef Name="Pripada_Kvar_Sifra_kvara" />
+              <PropertyRef Name="Pripada_Auto_Sifra_auta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Alat" EntityType="Self.Alat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Auto" EntityType="Self.Auto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Deo" EntityType="Self.Deo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dobavljac" EntityType="Self.Dobavljac" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Komercijalista" EntityType="Self.Komercijalista" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Koristi" EntityType="Self.Koristi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kvar" EntityType="Self.Kvar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Majstor" EntityType="Self.Majstor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nabavlja" EntityType="Self.Nabavlja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Popravka" EntityType="Self.Popravka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Popravlja" EntityType="Self.Popravlja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Porucuje" EntityType="Self.Porucuje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pregleda" EntityType="Self.Pregleda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pripada" EntityType="Self.Pripada" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pruza" EntityType="Self.Pruza" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Radi_popravka" EntityType="Self.Radi_popravka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Radi_pregled" EntityType="Self.Radi_pregled" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Radnik" EntityType="Self.Radnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Radnik_na_tehnickom_pregledu" EntityType="Self.Radnik_na_tehnickom_pregledu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tehnicki_pregled" EntityType="Self.Tehnicki_pregled" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usluga" EntityType="Self.Usluga" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Za" EntityType="Self.Za" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Komercijalista_Radnik_FK" Association="Self.Komercijalista_Radnik_FK">
+            <End Role="Radnik" EntitySet="Radnik" />
+            <End Role="Komercijalista" EntitySet="Komercijalista" />
+          </AssociationSet>
+          <AssociationSet Name="Koristi_Alat_FK" Association="Self.Koristi_Alat_FK">
+            <End Role="Alat" EntitySet="Alat" />
+            <End Role="Koristi" EntitySet="Koristi" />
+          </AssociationSet>
+          <AssociationSet Name="Koristi_Popravlja_FK" Association="Self.Koristi_Popravlja_FK">
+            <End Role="Popravlja" EntitySet="Popravlja" />
+            <End Role="Koristi" EntitySet="Koristi" />
+          </AssociationSet>
+          <AssociationSet Name="Majstor_Radnik_FK" Association="Self.Majstor_Radnik_FK">
+            <End Role="Radnik" EntitySet="Radnik" />
+            <End Role="Majstor" EntitySet="Majstor" />
+          </AssociationSet>
+          <AssociationSet Name="Nabavlja_Dobavljac_FK" Association="Self.Nabavlja_Dobavljac_FK">
+            <End Role="Dobavljac" EntitySet="Dobavljac" />
+            <End Role="Nabavlja" EntitySet="Nabavlja" />
+          </AssociationSet>
+          <AssociationSet Name="Nabavlja_Porucuje_FK" Association="Self.Nabavlja_Porucuje_FK">
+            <End Role="Porucuje" EntitySet="Porucuje" />
+            <End Role="Nabavlja" EntitySet="Nabavlja" />
+          </AssociationSet>
+          <AssociationSet Name="Popravka_Usluga_FK" Association="Self.Popravka_Usluga_FK">
+            <End Role="Usluga" EntitySet="Usluga" />
+            <End Role="Popravka" EntitySet="Popravka" />
+          </AssociationSet>
+          <AssociationSet Name="Popravlja_Kvar_FK" Association="Self.Popravlja_Kvar_FK">
+            <End Role="Kvar" EntitySet="Kvar" />
+            <End Role="Popravlja" EntitySet="Popravlja" />
+          </AssociationSet>
+          <AssociationSet Name="Popravlja_Majstor_FK" Association="Self.Popravlja_Majstor_FK">
+            <End Role="Majstor" EntitySet="Majstor" />
+            <End Role="Popravlja" EntitySet="Popravlja" />
+          </AssociationSet>
+          <AssociationSet Name="Porucuje_Deo_FK" Association="Self.Porucuje_Deo_FK">
+            <End Role="Deo" EntitySet="Deo" />
+            <End Role="Porucuje" EntitySet="Porucuje" />
+          </AssociationSet>
+          <AssociationSet Name="Porucuje_Komercijalista_FK" Association="Self.Porucuje_Komercijalista_FK">
+            <End Role="Komercijalista" EntitySet="Komercijalista" />
+            <End Role="Porucuje" EntitySet="Porucuje" />
+          </AssociationSet>
+          <AssociationSet Name="Pregleda_Auto_FK" Association="Self.Pregleda_Auto_FK">
+            <End Role="Auto" EntitySet="Auto" />
+            <End Role="Pregleda" EntitySet="Pregleda" />
+          </AssociationSet>
+          <AssociationSet Name="Pregleda_Radnik_na_tehnickom_pregledu_FK" Association="Self.Pregleda_Radnik_na_tehnickom_pregledu_FK">
+            <End Role="Radnik_na_tehnickom_pregledu" EntitySet="Radnik_na_tehnickom_pregledu" />
+            <End Role="Pregleda" EntitySet="Pregleda" />
+          </AssociationSet>
+          <AssociationSet Name="Pripada_Auto_FK" Association="Self.Pripada_Auto_FK">
+            <End Role="Auto" EntitySet="Auto" />
+            <End Role="Pripada" EntitySet="Pripada" />
+          </AssociationSet>
+          <AssociationSet Name="Pripada_Kvar_FK" Association="Self.Pripada_Kvar_FK">
+            <End Role="Kvar" EntitySet="Kvar" />
+            <End Role="Pripada" EntitySet="Pripada" />
+          </AssociationSet>
+          <AssociationSet Name="Pruza_Radnik_FK" Association="Self.Pruza_Radnik_FK">
+            <End Role="Radnik" EntitySet="Radnik" />
+            <End Role="Pruza" EntitySet="Pruza" />
+          </AssociationSet>
+          <AssociationSet Name="Pruza_Usluga_FK" Association="Self.Pruza_Usluga_FK">
+            <End Role="Usluga" EntitySet="Usluga" />
+            <End Role="Pruza" EntitySet="Pruza" />
+          </AssociationSet>
+          <AssociationSet Name="Radi_popravka_Majstor_FK" Association="Self.Radi_popravka_Majstor_FK">
+            <End Role="Majstor" EntitySet="Majstor" />
+            <End Role="Radi_popravka" EntitySet="Radi_popravka" />
+          </AssociationSet>
+          <AssociationSet Name="Radi_popravka_Popravka_FK" Association="Self.Radi_popravka_Popravka_FK">
+            <End Role="Popravka" EntitySet="Popravka" />
+            <End Role="Radi_popravka" EntitySet="Radi_popravka" />
+          </AssociationSet>
+          <AssociationSet Name="Radi_pregled_Radnik_na_tehnickom_pregledu_FK" Association="Self.Radi_pregled_Radnik_na_tehnickom_pregledu_FK">
+            <End Role="Radnik_na_tehnickom_pregledu" EntitySet="Radnik_na_tehnickom_pregledu" />
+            <End Role="Radi_pregled" EntitySet="Radi_pregled" />
+          </AssociationSet>
+          <AssociationSet Name="Radi_pregled_Tehnicki_pregled_FK" Association="Self.Radi_pregled_Tehnicki_pregled_FK">
+            <End Role="Tehnicki_pregled" EntitySet="Tehnicki_pregled" />
+            <End Role="Radi_pregled" EntitySet="Radi_pregled" />
+          </AssociationSet>
+          <AssociationSet Name="Radnik_na_tehnickom_pregledu_Radnik_FK" Association="Self.Radnik_na_tehnickom_pregledu_Radnik_FK">
+            <End Role="Radnik" EntitySet="Radnik" />
+            <End Role="Radnik_na_tehnickom_pregledu" EntitySet="Radnik_na_tehnickom_pregledu" />
+          </AssociationSet>
+          <AssociationSet Name="Tehnicki_pregled_Usluga_FK" Association="Self.Tehnicki_pregled_Usluga_FK">
+            <End Role="Usluga" EntitySet="Usluga" />
+            <End Role="Tehnicki_pregled" EntitySet="Tehnicki_pregled" />
+          </AssociationSet>
+          <AssociationSet Name="Za_Porucuje_Komercijalista_FK" Association="Self.Za_Porucuje_Komercijalista_FK">
+            <End Role="Porucuje" EntitySet="Porucuje" />
+            <End Role="Za" EntitySet="Za" />
+          </AssociationSet>
+          <AssociationSet Name="Za_Pripada_FK" Association="Self.Za_Pripada_FK">
+            <End Role="Pripada" EntitySet="Pripada" />
+            <End Role="Za" EntitySet="Za" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Alat">
+          <Key>
+            <PropertyRef Name="Sifra_alata" />
+          </Key>
+          <Property Name="Naziv_alata" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sifra_alata" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Popravljas" Relationship="Self.Koristi" FromRole="Alat" ToRole="Popravlja" />
+        </EntityType>
+        <EntityType Name="Auto">
+          <Key>
+            <PropertyRef Name="Sifra_auta" />
+          </Key>
+          <Property Name="Vrsta_auta" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sifra_auta" Type="Int32" Nullable="false" />
+          <Property Name="Marka" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Pripadas" Relationship="Self.Pripada_Auto_FK" FromRole="Auto" ToRole="Pripada" />
+          <NavigationProperty Name="Radnik_na_tehnickom_pregledu" Relationship="Self.Pregleda" FromRole="Auto" ToRole="Radnik_na_tehnickom_pregledu" />
+        </EntityType>
+        <EntityType Name="Deo">
+          <Key>
+            <PropertyRef Name="Sifra_Deo" />
+          </Key>
+          <Property Name="Naziv_deo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prozivodjac" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sifra_Deo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Porucujes" Relationship="Self.Porucuje_Deo_FK" FromRole="Deo" ToRole="Porucuje" />
+        </EntityType>
+        <EntityType Name="Dobavljac">
+          <Key>
+            <PropertyRef Name="Sifra_dobavljaca" />
+          </Key>
+          <Property Name="Sifra_dobavljaca" Type="Int32" Nullable="false" />
+          <Property Name="Ime_dobavljaca" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Adresa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Porucujes" Relationship="Self.Nabavlja" FromRole="Dobavljac" ToRole="Porucuje" />
+        </EntityType>
+        <EntityType Name="Komercijalista">
+          <Key>
+            <PropertyRef Name="Sifra_radnika" />
+          </Key>
+          <Property Name="Vrsta_nabavke" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sifra_radnika" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Radnik" Relationship="Self.Komercijalista_Radnik_FK" FromRole="Komercijalista" ToRole="Radnik" />
+          <NavigationProperty Name="Porucujes" Relationship="Self.Porucuje_Komercijalista_FK" FromRole="Komercijalista" ToRole="Porucuje" />
+        </EntityType>
+        <EntityType Name="Kvar">
+          <Key>
+            <PropertyRef Name="Sifra_kvara" />
+          </Key>
+          <Property Name="Tip_kvara" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sifra_kvara" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Popravljas" Relationship="Self.Popravlja_Kvar_FK" FromRole="Kvar" ToRole="Popravlja" />
+          <NavigationProperty Name="Pripadas" Relationship="Self.Pripada_Kvar_FK" FromRole="Kvar" ToRole="Pripada" />
+        </EntityType>
+        <EntityType Name="Majstor">
+          <Key>
+            <PropertyRef Name="Sifra_radnika" />
+          </Key>
+          <Property Name="Specijalnost" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sifra_radnika" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Radnik" Relationship="Self.Majstor_Radnik_FK" FromRole="Majstor" ToRole="Radnik" />
+          <NavigationProperty Name="Popravljas" Relationship="Self.Popravlja_Majstor_FK" FromRole="Majstor" ToRole="Popravlja" />
+          <NavigationProperty Name="Popravkas" Relationship="Self.Radi_popravka" FromRole="Majstor" ToRole="Popravka" />
+        </EntityType>
+        <EntityType Name="Popravka">
+          <Key>
+            <PropertyRef Name="Sifra_usluge" />
+          </Key>
+          <Property Name="Sifra_usluge" Type="Int32" Nullable="false" />
+          <Property Name="Garaza" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Usluga" Relationship="Self.Popravka_Usluga_FK" FromRole="Popravka" ToRole="Usluga" />
+          <NavigationProperty Name="Majstors" Relationship="Self.Radi_popravka" FromRole="Popravka" ToRole="Majstor" />
+        </EntityType>
+        <EntityType Name="Popravlja">
+          <Key>
+            <PropertyRef Name="Kvar_Sifra_kvara" />
+            <PropertyRef Name="Majstor_Sifra_radnika" />
+          </Key>
+          <Property Name="Kvar_Sifra_kvara" Type="Int32" Nullable="false" />
+          <Property Name="Majstor_Sifra_radnika" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kvar" Relationship="Self.Popravlja_Kvar_FK" FromRole="Popravlja" ToRole="Kvar" />
+          <NavigationProperty Name="Majstor" Relationship="Self.Popravlja_Majstor_FK" FromRole="Popravlja" ToRole="Majstor" />
+          <NavigationProperty Name="Alats" Relationship="Self.Koristi" FromRole="Popravlja" ToRole="Alat" />
+        </EntityType>
+        <EntityType Name="Porucuje">
+          <Key>
+            <PropertyRef Name="Komercijalista_Sifra_radnika" />
+            <PropertyRef Name="Deo_Sifra_Deo" />
+          </Key>
+          <Property Name="Komercijalista_Sifra_radnika" Type="Int32" Nullable="false" />
+          <Property Name="Deo_Sifra_Deo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Deo" Relationship="Self.Porucuje_Deo_FK" FromRole="Porucuje" ToRole="Deo" />
+          <NavigationProperty Name="Komercijalista" Relationship="Self.Porucuje_Komercijalista_FK" FromRole="Porucuje" ToRole="Komercijalista" />
+          <NavigationProperty Name="Dobavljacs" Relationship="Self.Nabavlja" FromRole="Porucuje" ToRole="Dobavljac" />
+          <NavigationProperty Name="Pripadas" Relationship="Self.Za" FromRole="Porucuje" ToRole="Pripada" />
+        </EntityType>
+        <EntityType Name="Pripada">
+          <Key>
+            <PropertyRef Name="Kvar_Sifra_kvara" />
+            <PropertyRef Name="Auto_Sifra_auta" />
+          </Key>
+          <Property Name="Kvar_Sifra_kvara" Type="Int32" Nullable="false" />
+          <Property Name="Auto_Sifra_auta" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Auto" Relationship="Self.Pripada_Auto_FK" FromRole="Pripada" ToRole="Auto" />
+          <NavigationProperty Name="Kvar" Relationship="Self.Pripada_Kvar_FK" FromRole="Pripada" ToRole="Kvar" />
+          <NavigationProperty Name="Porucujes" Relationship="Self.Za" FromRole="Pripada" ToRole="Porucuje" />
+        </EntityType>
+        <EntityType Name="Radnik">
+          <Key>
+            <PropertyRef Name="Sifra_radnika" />
+          </Key>
+          <Property Name="Ime" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prezime" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MBR" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sifra_radnika" Type="Int32" Nullable="false" />
+          <Property Name="Majstor" Type="String" MaxLength="28" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Komercijalista" Relationship="Self.Komercijalista_Radnik_FK" FromRole="Radnik" ToRole="Komercijalista" />
+          <NavigationProperty Name="Majstor1" Relationship="Self.Majstor_Radnik_FK" FromRole="Radnik" ToRole="Majstor" />
+          <NavigationProperty Name="Radnik_na_tehnickom_pregledu" Relationship="Self.Radnik_na_tehnickom_pregledu_Radnik_FK" FromRole="Radnik" ToRole="Radnik_na_tehnickom_pregledu" />
+          <NavigationProperty Name="Uslugas" Relationship="Self.Pruza" FromRole="Radnik" ToRole="Usluga" />
+        </EntityType>
+        <EntityType Name="Radnik_na_tehnickom_pregledu">
+          <Key>
+            <PropertyRef Name="Sifra_radnika" />
+          </Key>
+          <Property Name="Vrsta_vozila" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sifra_radnika" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Radnik" Relationship="Self.Radnik_na_tehnickom_pregledu_Radnik_FK" FromRole="Radnik_na_tehnickom_pregledu" ToRole="Radnik" />
+          <NavigationProperty Name="Autoes" Relationship="Self.Pregleda" FromRole="Radnik_na_tehnickom_pregledu" ToRole="Auto" />
+          <NavigationProperty Name="Tehnicki_pregled" Relationship="Self.Radi_pregled" FromRole="Radnik_na_tehnickom_pregledu" ToRole="Tehnicki_pregled" />
+        </EntityType>
+        <EntityType Name="Tehnicki_pregled">
+          <Key>
+            <PropertyRef Name="Sifra_usluge" />
+          </Key>
+          <Property Name="Sifra_usluge" Type="Int32" Nullable="false" />
+          <Property Name="Uspesnost" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Usluga" Relationship="Self.Tehnicki_pregled_Usluga_FK" FromRole="Tehnicki_pregled" ToRole="Usluga" />
+          <NavigationProperty Name="Radnik_na_tehnickom_pregledu" Relationship="Self.Radi_pregled" FromRole="Tehnicki_pregled" ToRole="Radnik_na_tehnickom_pregledu" />
+        </EntityType>
+        <EntityType Name="Usluga">
+          <Key>
+            <PropertyRef Name="Sifra_usluge" />
+          </Key>
+          <Property Name="Sifra_usluge" Type="Int32" Nullable="false" />
+          <Property Name="Vreme" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Vrsta" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Popravka" Relationship="Self.Popravka_Usluga_FK" FromRole="Usluga" ToRole="Popravka" />
+          <NavigationProperty Name="Tehnicki_pregled" Relationship="Self.Tehnicki_pregled_Usluga_FK" FromRole="Usluga" ToRole="Tehnicki_pregled" />
+          <NavigationProperty Name="Radniks" Relationship="Self.Pruza" FromRole="Usluga" ToRole="Radnik" />
+        </EntityType>
+        <Association Name="Pripada_Auto_FK">
+          <End Role="Auto" Type="Self.Auto" Multiplicity="1" />
+          <End Role="Pripada" Type="Self.Pripada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Auto">
+              <PropertyRef Name="Sifra_auta" />
+            </Principal>
+            <Dependent Role="Pripada">
+              <PropertyRef Name="Auto_Sifra_auta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Porucuje_Deo_FK">
+          <End Role="Deo" Type="Self.Deo" Multiplicity="1" />
+          <End Role="Porucuje" Type="Self.Porucuje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deo">
+              <PropertyRef Name="Sifra_Deo" />
+            </Principal>
+            <Dependent Role="Porucuje">
+              <PropertyRef Name="Deo_Sifra_Deo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Komercijalista_Radnik_FK">
+          <End Role="Radnik" Type="Self.Radnik" Multiplicity="1" />
+          <End Role="Komercijalista" Type="Self.Komercijalista" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Radnik">
+              <PropertyRef Name="Sifra_radnika" />
+            </Principal>
+            <Dependent Role="Komercijalista">
+              <PropertyRef Name="Sifra_radnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Porucuje_Komercijalista_FK">
+          <End Role="Komercijalista" Type="Self.Komercijalista" Multiplicity="1" />
+          <End Role="Porucuje" Type="Self.Porucuje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Komercijalista">
+              <PropertyRef Name="Sifra_radnika" />
+            </Principal>
+            <Dependent Role="Porucuje">
+              <PropertyRef Name="Komercijalista_Sifra_radnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Popravlja_Kvar_FK">
+          <End Role="Kvar" Type="Self.Kvar" Multiplicity="1" />
+          <End Role="Popravlja" Type="Self.Popravlja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kvar">
+              <PropertyRef Name="Sifra_kvara" />
+            </Principal>
+            <Dependent Role="Popravlja">
+              <PropertyRef Name="Kvar_Sifra_kvara" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Pripada_Kvar_FK">
+          <End Role="Kvar" Type="Self.Kvar" Multiplicity="1" />
+          <End Role="Pripada" Type="Self.Pripada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kvar">
+              <PropertyRef Name="Sifra_kvara" />
+            </Principal>
+            <Dependent Role="Pripada">
+              <PropertyRef Name="Kvar_Sifra_kvara" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Majstor_Radnik_FK">
+          <End Role="Radnik" Type="Self.Radnik" Multiplicity="1" />
+          <End Role="Majstor" Type="Self.Majstor" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Radnik">
+              <PropertyRef Name="Sifra_radnika" />
+            </Principal>
+            <Dependent Role="Majstor">
+              <PropertyRef Name="Sifra_radnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Popravlja_Majstor_FK">
+          <End Role="Majstor" Type="Self.Majstor" Multiplicity="1" />
+          <End Role="Popravlja" Type="Self.Popravlja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Majstor">
+              <PropertyRef Name="Sifra_radnika" />
+            </Principal>
+            <Dependent Role="Popravlja">
+              <PropertyRef Name="Majstor_Sifra_radnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Popravka_Usluga_FK">
+          <End Role="Usluga" Type="Self.Usluga" Multiplicity="1" />
+          <End Role="Popravka" Type="Self.Popravka" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usluga">
+              <PropertyRef Name="Sifra_usluge" />
+            </Principal>
+            <Dependent Role="Popravka">
+              <PropertyRef Name="Sifra_usluge" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Radnik_na_tehnickom_pregledu_Radnik_FK">
+          <End Role="Radnik" Type="Self.Radnik" Multiplicity="1" />
+          <End Role="Radnik_na_tehnickom_pregledu" Type="Self.Radnik_na_tehnickom_pregledu" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Radnik">
+              <PropertyRef Name="Sifra_radnika" />
+            </Principal>
+            <Dependent Role="Radnik_na_tehnickom_pregledu">
+              <PropertyRef Name="Sifra_radnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Tehnicki_pregled_Usluga_FK">
+          <End Role="Usluga" Type="Self.Usluga" Multiplicity="1" />
+          <End Role="Tehnicki_pregled" Type="Self.Tehnicki_pregled" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usluga">
+              <PropertyRef Name="Sifra_usluge" />
+            </Principal>
+            <Dependent Role="Tehnicki_pregled">
+              <PropertyRef Name="Sifra_usluge" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Koristi">
+          <End Role="Alat" Type="Self.Alat" Multiplicity="*" />
+          <End Role="Popravlja" Type="Self.Popravlja" Multiplicity="*" />
+        </Association>
+        <Association Name="Nabavlja">
+          <End Role="Dobavljac" Type="Self.Dobavljac" Multiplicity="*" />
+          <End Role="Porucuje" Type="Self.Porucuje" Multiplicity="*" />
+        </Association>
+        <Association Name="Pregleda">
+          <End Role="Auto" Type="Self.Auto" Multiplicity="*" />
+          <End Role="Radnik_na_tehnickom_pregledu" Type="Self.Radnik_na_tehnickom_pregledu" Multiplicity="*" />
+        </Association>
+        <Association Name="Pruza">
+          <End Role="Radnik" Type="Self.Radnik" Multiplicity="*" />
+          <End Role="Usluga" Type="Self.Usluga" Multiplicity="*" />
+        </Association>
+        <Association Name="Radi_popravka">
+          <End Role="Majstor" Type="Self.Majstor" Multiplicity="*" />
+          <End Role="Popravka" Type="Self.Popravka" Multiplicity="*" />
+        </Association>
+        <Association Name="Radi_pregled">
+          <End Role="Radnik_na_tehnickom_pregledu" Type="Self.Radnik_na_tehnickom_pregledu" Multiplicity="*" />
+          <End Role="Tehnicki_pregled" Type="Self.Tehnicki_pregled" Multiplicity="*" />
+        </Association>
+        <Association Name="Za">
+          <End Role="Porucuje" Type="Self.Porucuje" Multiplicity="*" />
+          <End Role="Pripada" Type="Self.Pripada" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Entities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Alats" EntityType="Self.Alat" />
+          <EntitySet Name="Autoes" EntityType="Self.Auto" />
+          <EntitySet Name="Deos" EntityType="Self.Deo" />
+          <EntitySet Name="Dobavljacs" EntityType="Self.Dobavljac" />
+          <EntitySet Name="Komercijalistas" EntityType="Self.Komercijalista" />
+          <EntitySet Name="Kvars" EntityType="Self.Kvar" />
+          <EntitySet Name="Majstors" EntityType="Self.Majstor" />
+          <EntitySet Name="Popravkas" EntityType="Self.Popravka" />
+          <EntitySet Name="Popravljas" EntityType="Self.Popravlja" />
+          <EntitySet Name="Porucujes" EntityType="Self.Porucuje" />
+          <EntitySet Name="Pripadas" EntityType="Self.Pripada" />
+          <EntitySet Name="Radniks" EntityType="Self.Radnik" />
+          <EntitySet Name="Radnik_na_tehnickom_pregledu" EntityType="Self.Radnik_na_tehnickom_pregledu" />
+          <EntitySet Name="Tehnicki_pregled" EntityType="Self.Tehnicki_pregled" />
+          <EntitySet Name="Uslugas" EntityType="Self.Usluga" />
+          <AssociationSet Name="Pripada_Auto_FK" Association="Self.Pripada_Auto_FK">
+            <End Role="Auto" EntitySet="Autoes" />
+            <End Role="Pripada" EntitySet="Pripadas" />
+          </AssociationSet>
+          <AssociationSet Name="Porucuje_Deo_FK" Association="Self.Porucuje_Deo_FK">
+            <End Role="Deo" EntitySet="Deos" />
+            <End Role="Porucuje" EntitySet="Porucujes" />
+          </AssociationSet>
+          <AssociationSet Name="Komercijalista_Radnik_FK" Association="Self.Komercijalista_Radnik_FK">
+            <End Role="Radnik" EntitySet="Radniks" />
+            <End Role="Komercijalista" EntitySet="Komercijalistas" />
+          </AssociationSet>
+          <AssociationSet Name="Porucuje_Komercijalista_FK" Association="Self.Porucuje_Komercijalista_FK">
+            <End Role="Komercijalista" EntitySet="Komercijalistas" />
+            <End Role="Porucuje" EntitySet="Porucujes" />
+          </AssociationSet>
+          <AssociationSet Name="Popravlja_Kvar_FK" Association="Self.Popravlja_Kvar_FK">
+            <End Role="Kvar" EntitySet="Kvars" />
+            <End Role="Popravlja" EntitySet="Popravljas" />
+          </AssociationSet>
+          <AssociationSet Name="Pripada_Kvar_FK" Association="Self.Pripada_Kvar_FK">
+            <End Role="Kvar" EntitySet="Kvars" />
+            <End Role="Pripada" EntitySet="Pripadas" />
+          </AssociationSet>
+          <AssociationSet Name="Majstor_Radnik_FK" Association="Self.Majstor_Radnik_FK">
+            <End Role="Radnik" EntitySet="Radniks" />
+            <End Role="Majstor" EntitySet="Majstors" />
+          </AssociationSet>
+          <AssociationSet Name="Popravlja_Majstor_FK" Association="Self.Popravlja_Majstor_FK">
+            <End Role="Majstor" EntitySet="Majstors" />
+            <End Role="Popravlja" EntitySet="Popravljas" />
+          </AssociationSet>
+          <AssociationSet Name="Popravka_Usluga_FK" Association="Self.Popravka_Usluga_FK">
+            <End Role="Usluga" EntitySet="Uslugas" />
+            <End Role="Popravka" EntitySet="Popravkas" />
+          </AssociationSet>
+          <AssociationSet Name="Radnik_na_tehnickom_pregledu_Radnik_FK" Association="Self.Radnik_na_tehnickom_pregledu_Radnik_FK">
+            <End Role="Radnik" EntitySet="Radniks" />
+            <End Role="Radnik_na_tehnickom_pregledu" EntitySet="Radnik_na_tehnickom_pregledu" />
+          </AssociationSet>
+          <AssociationSet Name="Tehnicki_pregled_Usluga_FK" Association="Self.Tehnicki_pregled_Usluga_FK">
+            <End Role="Usluga" EntitySet="Uslugas" />
+            <End Role="Tehnicki_pregled" EntitySet="Tehnicki_pregled" />
+          </AssociationSet>
+          <AssociationSet Name="Koristi" Association="Self.Koristi">
+            <End Role="Alat" EntitySet="Alats" />
+            <End Role="Popravlja" EntitySet="Popravljas" />
+          </AssociationSet>
+          <AssociationSet Name="Nabavlja" Association="Self.Nabavlja">
+            <End Role="Dobavljac" EntitySet="Dobavljacs" />
+            <End Role="Porucuje" EntitySet="Porucujes" />
+          </AssociationSet>
+          <AssociationSet Name="Pregleda" Association="Self.Pregleda">
+            <End Role="Auto" EntitySet="Autoes" />
+            <End Role="Radnik_na_tehnickom_pregledu" EntitySet="Radnik_na_tehnickom_pregledu" />
+          </AssociationSet>
+          <AssociationSet Name="Pruza" Association="Self.Pruza">
+            <End Role="Radnik" EntitySet="Radniks" />
+            <End Role="Usluga" EntitySet="Uslugas" />
+          </AssociationSet>
+          <AssociationSet Name="Radi_popravka" Association="Self.Radi_popravka">
+            <End Role="Majstor" EntitySet="Majstors" />
+            <End Role="Popravka" EntitySet="Popravkas" />
+          </AssociationSet>
+          <AssociationSet Name="Radi_pregled" Association="Self.Radi_pregled">
+            <End Role="Radnik_na_tehnickom_pregledu" EntitySet="Radnik_na_tehnickom_pregledu" />
+            <End Role="Tehnicki_pregled" EntitySet="Tehnicki_pregled" />
+          </AssociationSet>
+          <AssociationSet Name="Za" Association="Self.Za">
+            <End Role="Porucuje" EntitySet="Porucujes" />
+            <End Role="Pripada" EntitySet="Pripadas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities2">
+          <EntitySetMapping Name="Alats">
+            <EntityTypeMapping TypeName="Model.Alat">
+              <MappingFragment StoreEntitySet="Alat">
+                <ScalarProperty Name="Naziv_alata" ColumnName="Naziv_alata" />
+                <ScalarProperty Name="Sifra_alata" ColumnName="Sifra_alata" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Autoes">
+            <EntityTypeMapping TypeName="Model.Auto">
+              <MappingFragment StoreEntitySet="Auto">
+                <ScalarProperty Name="Vrsta_auta" ColumnName="Vrsta_auta" />
+                <ScalarProperty Name="Sifra_auta" ColumnName="Sifra_auta" />
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deos">
+            <EntityTypeMapping TypeName="Model.Deo">
+              <MappingFragment StoreEntitySet="Deo">
+                <ScalarProperty Name="Naziv_deo" ColumnName="Naziv_deo" />
+                <ScalarProperty Name="Prozivodjac" ColumnName="Prozivodjac" />
+                <ScalarProperty Name="Sifra_Deo" ColumnName="Sifra_Deo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dobavljacs">
+            <EntityTypeMapping TypeName="Model.Dobavljac">
+              <MappingFragment StoreEntitySet="Dobavljac">
+                <ScalarProperty Name="Sifra_dobavljaca" ColumnName="Sifra_dobavljaca" />
+                <ScalarProperty Name="Ime_dobavljaca" ColumnName="Ime_dobavljaca" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Komercijalistas">
+            <EntityTypeMapping TypeName="Model.Komercijalista">
+              <MappingFragment StoreEntitySet="Komercijalista">
+                <ScalarProperty Name="Vrsta_nabavke" ColumnName="Vrsta_nabavke" />
+                <ScalarProperty Name="Sifra_radnika" ColumnName="Sifra_radnika" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kvars">
+            <EntityTypeMapping TypeName="Model.Kvar">
+              <MappingFragment StoreEntitySet="Kvar">
+                <ScalarProperty Name="Tip_kvara" ColumnName="Tip_kvara" />
+                <ScalarProperty Name="Sifra_kvara" ColumnName="Sifra_kvara" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Majstors">
+            <EntityTypeMapping TypeName="Model.Majstor">
+              <MappingFragment StoreEntitySet="Majstor">
+                <ScalarProperty Name="Specijalnost" ColumnName="Specijalnost" />
+                <ScalarProperty Name="Sifra_radnika" ColumnName="Sifra_radnika" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Popravkas">
+            <EntityTypeMapping TypeName="Model.Popravka">
+              <MappingFragment StoreEntitySet="Popravka">
+                <ScalarProperty Name="Sifra_usluge" ColumnName="Sifra_usluge" />
+                <ScalarProperty Name="Garaza" ColumnName="Garaza" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Popravljas">
+            <EntityTypeMapping TypeName="Model.Popravlja">
+              <MappingFragment StoreEntitySet="Popravlja">
+                <ScalarProperty Name="Kvar_Sifra_kvara" ColumnName="Kvar_Sifra_kvara" />
+                <ScalarProperty Name="Majstor_Sifra_radnika" ColumnName="Majstor_Sifra_radnika" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Porucujes">
+            <EntityTypeMapping TypeName="Model.Porucuje">
+              <MappingFragment StoreEntitySet="Porucuje">
+                <ScalarProperty Name="Komercijalista_Sifra_radnika" ColumnName="Komercijalista_Sifra_radnika" />
+                <ScalarProperty Name="Deo_Sifra_Deo" ColumnName="Deo_Sifra_Deo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pripadas">
+            <EntityTypeMapping TypeName="Model.Pripada">
+              <MappingFragment StoreEntitySet="Pripada">
+                <ScalarProperty Name="Kvar_Sifra_kvara" ColumnName="Kvar_Sifra_kvara" />
+                <ScalarProperty Name="Auto_Sifra_auta" ColumnName="Auto_Sifra_auta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Radniks">
+            <EntityTypeMapping TypeName="Model.Radnik">
+              <MappingFragment StoreEntitySet="Radnik">
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="MBR" ColumnName="MBR" />
+                <ScalarProperty Name="Sifra_radnika" ColumnName="Sifra_radnika" />
+                <ScalarProperty Name="Majstor" ColumnName="Majstor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Radnik_na_tehnickom_pregledu">
+            <EntityTypeMapping TypeName="Model.Radnik_na_tehnickom_pregledu">
+              <MappingFragment StoreEntitySet="Radnik_na_tehnickom_pregledu">
+                <ScalarProperty Name="Vrsta_vozila" ColumnName="Vrsta_vozila" />
+                <ScalarProperty Name="Sifra_radnika" ColumnName="Sifra_radnika" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tehnicki_pregled">
+            <EntityTypeMapping TypeName="Model.Tehnicki_pregled">
+              <MappingFragment StoreEntitySet="Tehnicki_pregled">
+                <ScalarProperty Name="Sifra_usluge" ColumnName="Sifra_usluge" />
+                <ScalarProperty Name="Uspesnost" ColumnName="Uspesnost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uslugas">
+            <EntityTypeMapping TypeName="Model.Usluga">
+              <MappingFragment StoreEntitySet="Usluga">
+                <ScalarProperty Name="Sifra_usluge" ColumnName="Sifra_usluge" />
+                <ScalarProperty Name="Vreme" ColumnName="Vreme" />
+                <ScalarProperty Name="Vrsta" ColumnName="Vrsta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Koristi" TypeName="Model.Koristi" StoreEntitySet="Koristi">
+            <EndProperty Name="Alat">
+              <ScalarProperty Name="Sifra_alata" ColumnName="Alat_Sifra_alata" />
+            </EndProperty>
+            <EndProperty Name="Popravlja">
+              <ScalarProperty Name="Kvar_Sifra_kvara" ColumnName="Popravlja_Sifra_kvara" />
+              <ScalarProperty Name="Majstor_Sifra_radnika" ColumnName="Popravlja_Sifra_radnika" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Nabavlja" TypeName="Model.Nabavlja" StoreEntitySet="Nabavlja">
+            <EndProperty Name="Dobavljac">
+              <ScalarProperty Name="Sifra_dobavljaca" ColumnName="Dobavljac_Sifra_dobavljaca" />
+            </EndProperty>
+            <EndProperty Name="Porucuje">
+              <ScalarProperty Name="Komercijalista_Sifra_radnika" ColumnName="Porucuje_Sifra_radnika" />
+              <ScalarProperty Name="Deo_Sifra_Deo" ColumnName="Porucuje_Sifra_Deo" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Pregleda" TypeName="Model.Pregleda" StoreEntitySet="Pregleda">
+            <EndProperty Name="Auto">
+              <ScalarProperty Name="Sifra_auta" ColumnName="Auto_Sifra_auta" />
+            </EndProperty>
+            <EndProperty Name="Radnik_na_tehnickom_pregledu">
+              <ScalarProperty Name="Sifra_radnika" ColumnName="Radnik_na_tehnickom_pregledu_Sifra_radnika" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Pruza" TypeName="Model.Pruza" StoreEntitySet="Pruza">
+            <EndProperty Name="Radnik">
+              <ScalarProperty Name="Sifra_radnika" ColumnName="Radnik_Sifra_radnika" />
+            </EndProperty>
+            <EndProperty Name="Usluga">
+              <ScalarProperty Name="Sifra_usluge" ColumnName="Usluga_Sifra_usluge" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Radi_popravka" TypeName="Model.Radi_popravka" StoreEntitySet="Radi_popravka">
+            <EndProperty Name="Majstor">
+              <ScalarProperty Name="Sifra_radnika" ColumnName="Majstor_Sifra_radnika" />
+            </EndProperty>
+            <EndProperty Name="Popravka">
+              <ScalarProperty Name="Sifra_usluge" ColumnName="Popravka_Sifra_usluge" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Radi_pregled" TypeName="Model.Radi_pregled" StoreEntitySet="Radi_pregled">
+            <EndProperty Name="Radnik_na_tehnickom_pregledu">
+              <ScalarProperty Name="Sifra_radnika" ColumnName="Radnik_na_tehnickom_pregledu_Sifra_radnika" />
+            </EndProperty>
+            <EndProperty Name="Tehnicki_pregled">
+              <ScalarProperty Name="Sifra_usluge" ColumnName="Tehnicki_pregled_Sifra_usluge" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Za" TypeName="Model.Za" StoreEntitySet="Za">
+            <EndProperty Name="Porucuje">
+              <ScalarProperty Name="Komercijalista_Sifra_radnika" ColumnName="Porucuje_Komercijalista_Sifra_radnika" />
+              <ScalarProperty Name="Deo_Sifra_Deo" ColumnName="Porucuje_Deo_Sifra_Deo" />
+            </EndProperty>
+            <EndProperty Name="Pripada">
+              <ScalarProperty Name="Kvar_Sifra_kvara" ColumnName="Pripada_Kvar_Sifra_kvara" />
+              <ScalarProperty Name="Auto_Sifra_auta" ColumnName="Pripada_Auto_Sifra_auta" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

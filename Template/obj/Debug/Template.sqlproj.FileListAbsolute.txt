@@ -1,0 +1,41 @@
+C:\Users\e373-2015\Desktop\Template BP2\Template\bin\Debug\Template.dacpac
+C:\Users\e373-2015\Desktop\Template BP2\Template\bin\Debug\Template.dll
+C:\Users\e373-2015\Desktop\Template BP2\Template\bin\Debug\Template.pdb
+C:\Users\e373-2015\Desktop\Template BP2\Template\obj\Debug\Model.xml
+C:\Users\e373-2015\Desktop\Template BP2\Template\obj\Debug\refactor.xml
+C:\Users\e373-2015\Desktop\Template BP2\Template\obj\Debug\postdeploy.sql
+C:\Users\e373-2015\Desktop\Template BP2\Template\obj\Debug\predeploy.sql
+C:\Users\e373-2015\Desktop\Template BP2\Template\obj\Debug\Template.dll
+C:\Users\e373-2015\Desktop\Template BP2\Template\obj\Debug\Template.pdb
+C:\Users\Jelena\Desktop\Blok6\Template BP2\Template\bin\Debug\Template.dacpac
+C:\Users\Jelena\Desktop\Blok6\Template BP2\Template\bin\Debug\Template.dll
+C:\Users\Jelena\Desktop\Blok6\Template BP2\Template\bin\Debug\Template.pdb
+C:\Users\Jelena\Desktop\Blok6\Template BP2\Template\obj\Debug\Template.sqlprojAssemblyReference.cache
+C:\Users\Jelena\Desktop\Blok6\Template BP2\Template\obj\Debug\Template.dll
+C:\Users\Jelena\Desktop\Blok6\Template BP2\Template\obj\Debug\Template.pdb
+C:\Users\e373-2015\Desktop\Template BP2_18.03\Template BP2\Template\bin\Debug\Template.dacpac
+C:\Users\e373-2015\Desktop\Template BP2_18.03\Template BP2\Template\bin\Debug\Template.dll
+C:\Users\e373-2015\Desktop\Template BP2_18.03\Template BP2\Template\bin\Debug\Template.pdb
+C:\Users\e373-2015\Desktop\Template BP2_18.03\Template BP2\Template\obj\Debug\Template.dll
+C:\Users\e373-2015\Desktop\Template BP2_18.03\Template BP2\Template\obj\Debug\Template.pdb
+C:\Users\Jelena\Desktop\Blok6\Template BP2_19.03\Template BP2_18.03\Template BP2\Template\bin\Debug\Template.dacpac
+C:\Users\Jelena\Desktop\Blok6\Template BP2_19.03\Template BP2_18.03\Template BP2\Template\bin\Debug\Template.dll
+C:\Users\Jelena\Desktop\Blok6\Template BP2_19.03\Template BP2_18.03\Template BP2\Template\bin\Debug\Template.pdb
+C:\Users\Jelena\Desktop\Blok6\Template BP2_19.03\Template BP2_18.03\Template BP2\Template\obj\Debug\Template.sqlprojAssemblyReference.cache
+C:\Users\Jelena\Desktop\Blok6\Template BP2_19.03\Template BP2_18.03\Template BP2\Template\obj\Debug\Template.dll
+C:\Users\Jelena\Desktop\Blok6\Template BP2_19.03\Template BP2_18.03\Template BP2\Template\obj\Debug\Template.pdb
+C:\Users\e373-2015\Desktop\Template BP2_19.03\Template BP2_18.03\Template BP2\Template\bin\Debug\Template.dacpac
+C:\Users\e373-2015\Desktop\Template BP2_19.03\Template BP2_18.03\Template BP2\Template\bin\Debug\Template.dll
+C:\Users\e373-2015\Desktop\Template BP2_19.03\Template BP2_18.03\Template BP2\Template\bin\Debug\Template.pdb
+C:\Users\e373-2015\Desktop\Template BP2_19.03\Template BP2_18.03\Template BP2\Template\obj\Debug\Template.dll
+C:\Users\e373-2015\Desktop\Template BP2_19.03\Template BP2_18.03\Template BP2\Template\obj\Debug\Template.pdb
+C:\Users\Jelena\Downloads\PR_73_2015\Template BP2_19.03\Template BP2_18.03\Template BP2\Template\bin\Debug\Template.dacpac
+C:\Users\Jelena\Downloads\PR_73_2015\Template BP2_19.03\Template BP2_18.03\Template BP2\Template\bin\Debug\Template.dll
+C:\Users\Jelena\Downloads\PR_73_2015\Template BP2_19.03\Template BP2_18.03\Template BP2\Template\bin\Debug\Template.pdb
+C:\Users\Jelena\Downloads\PR_73_2015\Template BP2_19.03\Template BP2_18.03\Template BP2\Template\obj\Debug\Template.sqlprojAssemblyReference.cache
+C:\Users\Jelena\Downloads\PR_73_2015\Template BP2_19.03\Template BP2_18.03\Template BP2\Template\obj\Debug\Model.xml
+C:\Users\Jelena\Downloads\PR_73_2015\Template BP2_19.03\Template BP2_18.03\Template BP2\Template\obj\Debug\refactor.xml
+C:\Users\Jelena\Downloads\PR_73_2015\Template BP2_19.03\Template BP2_18.03\Template BP2\Template\obj\Debug\postdeploy.sql
+C:\Users\Jelena\Downloads\PR_73_2015\Template BP2_19.03\Template BP2_18.03\Template BP2\Template\obj\Debug\predeploy.sql
+C:\Users\Jelena\Downloads\PR_73_2015\Template BP2_19.03\Template BP2_18.03\Template BP2\Template\obj\Debug\Template.dll
+C:\Users\Jelena\Downloads\PR_73_2015\Template BP2_19.03\Template BP2_18.03\Template BP2\Template\obj\Debug\Template.pdb

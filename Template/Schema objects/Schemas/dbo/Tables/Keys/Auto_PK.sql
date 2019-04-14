@@ -1,0 +1,1 @@
+﻿ALTER TABLE Auto ADD CONSTRAINT Auto_PK PRIMARY KEY ( Sifra_auta ) ;

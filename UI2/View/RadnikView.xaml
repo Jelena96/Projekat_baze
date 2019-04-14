@@ -1,0 +1,58 @@
+﻿<Window x:Class="UI2.View.RadnikView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UI2.View"
+        xmlns:local1="clr-namespace:UI2"
+        xmlns:local11="clr-namespace:UI2.ModelView"
+        mc:Ignorable="d"
+        Title="RadnikView" Background="Gray" Height="450" Width="800">
+    <Window.DataContext>
+        <local11:RadnikViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Image Margin="136,21,498,292"/>
+        <Label FontSize="25" Foreground="Black" Content="Dodavanje radnika" FontStyle="Italic" Margin="475,11,80,334" RenderTransformOrigin="1.464,2.582"/>
+        <Label FontSize="20" Foreground="Black" Margin="413,73,285,292" Content="Ime:" RenderTransformOrigin="1.326,0.607">
+        </Label>
+        <Label FontSize="20" Foreground="Black" Content="Prezime:" Margin="413,127,262,237" RenderTransformOrigin="1.679,0.673"/>
+        <TextBox Background="LightGray" FontSize="20" Margin="524,73,115,299" Name="txt_Ime" TextChanged="txt_Ime_TextChanged" Text="{Binding Ime,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <Label FontSize="20" Foreground="Black" Content="MBR:"  Margin="413,191,285,181"/>
+        <TextBox FontSize="20" Background="LightGray" Margin="524,191,115,181" Name="txt_Mbr" TextChanged="txt_Mbr_TextChanged" Text="{Binding MBR,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Background="LightGray" FontSize="20"  Margin="524,132,115,240" Name="txt_Prezime" TextChanged="txt_Prezime_TextChanged"  Text="{Binding Prezime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" RenderTransformOrigin="1.445,0.51"/>
+        <TextBlock Text="{Binding CurrentUser.ValidationErrors[Password]}"
+                               Foreground="Red" Margin="299,243,343,135" RenderTransformOrigin="0.497,0.454"/>
+        <Label FontSize="20" Foreground="Black" Content="Specijalnost:" Margin="390,243,285,128"/>
+        <ComboBox Margin="527,250,115,121" Name="txt_Specijalnost"  SelectedItem="{Binding Specijalnost,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+            <ComboBoxItem Content="Autoelektricar"/>
+            <ComboBoxItem Content="Mehanicar"/>
+        </ComboBox>
+        <Canvas Margin="0,0,687,376">
+            <Label Content="Lista Radnika" FontSize="30" Foreground="Black" FontStyle="Italic" Canvas.Left="47" Canvas.Top="10"/>
+            <ListView ItemsSource="{Binding RadnikList}" SelectedItem="{Binding SelectedItem}" Background="LightGray" Height="161" Canvas.Left="24" Canvas.Top="93" Width="313">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Sifra" DisplayMemberBinding="{Binding Radnik.Sifra_radnika}"/>
+                        <GridViewColumn Header="Ime" DisplayMemberBinding="{Binding Radnik.Ime}" />
+                        <GridViewColumn Header="Prezime" DisplayMemberBinding="{Binding Radnik.Prezime}"/>
+                        <GridViewColumn Header="MBR" Width="50" DisplayMemberBinding="{Binding Radnik.MBR}"/>
+                        <GridViewColumn Header="Specijalnost" Width="80" DisplayMemberBinding="{Binding Specijalnost}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Canvas>
+        <Button Content="Dodaj Radnika"  Background="LightGray" FontStyle="Italic" Height="23" HorizontalAlignment="Left" Margin="536,336,0,0" 
+                VerticalAlignment="Top" Width="141"
+                Command="{Binding AddRadnikCommand}"  />
+        <Button Content="Obrisi Radnika" Background="LightGray" Height="23" FontStyle="Italic" HorizontalAlignment="Left" Margin="190,281,0,0" 
+                VerticalAlignment="Top" Width="141"
+                Command="{Binding DeleteRadnikCommand}"  />
+        <Button Content="Izmeni Radnika" Background="LightGray" Height="23" FontStyle="Italic" HorizontalAlignment="Left" Margin="44,281,0,0" 
+                VerticalAlignment="Top" Width="141"
+                Command="{Binding UpdateRadnikCommand}"  />
+        <Button Content="Sacuvaj Izmenu" Background="LightGray" Height="23" FontStyle="Italic" HorizontalAlignment="Left" Margin="107,336,0,0" 
+                VerticalAlignment="Top" Width="141"
+                Command="{Binding SaveUpdateRadnikCommand}" RenderTransformOrigin="0.259,0.714"  />
+    </Grid>
+</Window>
